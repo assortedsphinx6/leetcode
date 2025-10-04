@@ -11,17 +11,22 @@
 
 class Solution:
     def findSolution(self, customfunction: 'CustomFunction', z: int) -> List[List[int]]:
-        res = []
-        x,y = 1,1000
-        while x<=1000 and y>=1:
-            val = customfunction.f(x,y)
-            if val == z:
-                res.append([x,y])
-                x+=1
-                y-=1
-            elif val < z:
-                x+=1
-            else:
-                y-=1
-        return res
+        ans = []
+        x_i, x_j = 1, 1000
+
+        while x_i <= x_j:
+            y_i, y_j = 1, 1000
+            while y_i <= y_j:
+                mid = (y_i + y_j)//2
+                val = customfunction.f(x_i, mid)
+                if val == z:
+                    ans.append([x_i, mid])
+                    break
+                if val < z :
+                    y_i = mid + 1
+                else:
+                    y_j = mid - 1
+                
+            x_i += 1
+        return ans
                     
