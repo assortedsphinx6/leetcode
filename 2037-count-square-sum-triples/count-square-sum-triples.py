@@ -11,3 +11,4 @@ class Solution:
                     count += 1
         return count * 2
 
+# a can never equal b since a^2 + a^2 = 2a^2, therefore c = a*root(2) which is irrational
