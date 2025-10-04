@@ -1,9 +1,13 @@
-import numpy as np
+from math import isqrt
 class Solution:
     def countTriples(self, n: int) -> int:
         count = 0
-        for i in range(1,n):
-            for j in range(1,n):
-                if ((i**2) + (j**2)) <= (n**2) and i!=j and np.sqrt((i**2) + (j**2)).is_integer():
-                    count=count+1
-        return count
+        for a in range(1,n+1):
+            aa = a*a
+            for b in range(a+1, n+1): # ensure a<b
+                s = aa + b*b
+                c = isqrt(s)
+                if c<=n and c*c == s:
+                    count += 1
+        return count * 2
+
