@@ -1,12 +1,13 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        if len(strs)==1 or len(strs)==0:
-            return [strs]
-        groups = defaultdict(list)
-        for s in strs:
-            key = tuple(sorted(s)) 
-            groups[key].append(s)
-        return list(groups.values())
+        dict = {}
+        for word in strs:
+            sorted_word = "".join(sorted(word))
+            if sorted_word in dict:
+                dict[sorted_word].append(word)
+            else:
+                dict[sorted_word] = [word]
+        return list(dict.values())
 
 
 
