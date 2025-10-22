@@ -1,7 +1,7 @@
 class Solution:
 
     def __init__(self, nums: List[int]):
-        self.nums = nums
+        self.nums = nums[:]
         self.nums_og = nums[:]
         
 
