@@ -16,6 +16,7 @@ class LRUCache:
         # update if exists
         if key in self.cache:
             self.cache.move_to_end(key)
+            self.cache[key] = value
         self.cache[key] = value
         # evict least recently used
         if len(self.cache) > self.capacity:
