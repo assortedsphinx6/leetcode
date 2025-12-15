@@ -3,7 +3,5 @@ class Solution:
         count = 0
         for i in range (len(startTime)):
             if startTime[i] <= queryTime and endTime[i] >= queryTime:
-                count += 1
-                print(startTime[i], endTime[i])
-        
+                count += 1        
         return count
