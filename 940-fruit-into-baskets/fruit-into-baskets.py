@@ -1,21 +1,23 @@
-from typing import List
-from collections import defaultdict
-
 class Solution:
-    def totalFruit(self, fruits: List[int]) -> int:
-        count = defaultdict(int)
-        left = 0
+    def totalFruit(self, fruits):
+        last = second_last = -1
+        last_count = 0
+        curr = 0
         res = 0
 
-        for right in range(len(fruits)):
-            count[fruits[right]] += 1
+        for f in fruits:
+            if f == last or f == second_last:
+                curr += 1
+            else:
+                curr = last_count + 1
 
-            while len(count) > 2:
-                count[fruits[left]] -= 1
-                if count[fruits[left]] == 0:
-                    del count[fruits[left]]
-                left += 1
+            if f == last:
+                last_count += 1
+            else:
+                last_count = 1
+                second_last = last
+                last = f
 
-            res = max(res, right - left + 1)
+            res = max(res, curr)
 
         return res
