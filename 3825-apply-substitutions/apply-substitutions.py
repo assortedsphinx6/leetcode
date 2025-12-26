@@ -1,10 +1,9 @@
 class Solution:
     def applySubstitutions(self, replacements: List[List[str]], text: str) -> str:
-        mapping = {k: v for k, v in replacements}
-        pattern = re.compile(r'%([A-Z])%')
+        rep_map = dict(replacements)
 
-        # Keep substituting until no placeholders remain
-        while pattern.search(text):
-            text = pattern.sub(lambda m: mapping[m.group(1)], text)
-
+        while '%' in text:
+            for (k, v) in rep_map.items():
+                text = text.replace('%' + k + '%', v)
+        
         return text
