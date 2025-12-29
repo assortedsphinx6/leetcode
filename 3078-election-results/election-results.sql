@@ -9,6 +9,7 @@ candidate_votes AS (
     FROM Votes v
     JOIN voter_counts vc
       ON v.voter = vc.voter
+    WHERE v.candidate IS NOT NULL
     GROUP BY v.candidate
 )
 SELECT candidate
